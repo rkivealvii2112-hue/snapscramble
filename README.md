@@ -4,7 +4,7 @@
 
 I built this as a mini-project for a web design course. While most projects focused on static landing pages, I wanted to push my frontend logic and DOM manipulation skills under a tight deadline to create something genuinely playable. 
 
-🔗 **[Play the Live Demo Here!](https://rkivealvii2112-hue.github.io/snapscramble/)** *(Note: Ensure GitHub Pages is active)*
+🔗 **[Play the Live Demo Here!](https://rkivealvii2112-hue.github.io/snapscramble/)** 
 
 ---
 
