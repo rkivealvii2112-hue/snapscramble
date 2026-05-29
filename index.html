@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapScramble</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glass-card" id="gameCard">
+        <header>
+            <h1>Snap<span class="neon-text">Scramble</span></h1>
+            <p>Upload an image to start the puzzle.</p>
+        </header>
+
+        <div class="controls">
+           
+            <label for="imageUpload" class="custom-file-upload">
+                Choose Image
+            </label>
+            <input type="file" id="imageUpload" accept="image/*" />
+            
+            <div class="timer" id="timerDisplay">00:00</div>
+        </div>
+
+        <div class="game-board" id="puzzleGrid">
+            
+        </div>
+
+        
+        <div class="win-overlay hidden" id="winOverlay">
+            <h2>System <span class="neon-text">Restored!</span></h2>
+            <p>Time: <span id="finalTime">00:00</span></p>
+            <button id="playAgainBtn" class="custom-file-upload neon-btn">Play Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

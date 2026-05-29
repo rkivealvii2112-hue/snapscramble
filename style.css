@@ -1,0 +1,203 @@
+:root {
+    --bg-color: #0d0d0d;
+    --card-bg: rgba(255, 255, 255, 0.04);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --neon-green: #00ffcc;
+    --neon-purple: #b026ff;
+    --text-main: #f0f0f0;
+    --text-muted: #888888;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    background-image: radial-gradient(circle at 15% 50%, rgba(176, 38, 255, 0.1), transparent 25%),
+                      radial-gradient(circle at 85% 30%, rgba(0, 255, 204, 0.05), transparent 25%);
+}
+
+/* Glassmorphism Card */
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 2.5rem;
+    width: 90%;
+    max-width: 900px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    position: relative;
+    overflow: hidden;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.neon-text {
+    color: var(--neon-green);
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+}
+
+p {
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    background: transparent;
+    border: 1px solid var(--neon-purple);
+    color: var(--neon-purple);
+    padding: 10px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.custom-file-upload:hover {
+    background: var(--neon-purple);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(176, 38, 255, 0.4);
+}
+
+.timer {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--neon-green);
+    text-shadow: 0 0 8px rgba(0, 255, 204, 0.3);
+}
+
+/* Game Board (Grid) */
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 4px;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 2 / 1;
+    border: 2px solid var(--border-color);
+}
+
+.puzzle-piece {
+    background-size: cover;
+    background-position: center;
+    cursor: grab;
+    transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.2s ease;
+    border-radius: 4px;
+}
+
+.puzzle-piece:active {
+    cursor: grabbing;
+}
+
+/* Snappy interaction classes */
+.puzzle-piece.dragging {
+    opacity: 0.8;
+    transform: scale(0.95);
+    box-shadow: 0 0 20px var(--neon-green);
+    z-index: 10;
+    border: 2px solid var(--neon-green);
+}
+
+.puzzle-piece.drag-over {
+    transform: scale(1.05);
+    box-shadow: inset 0 0 15px var(--neon-purple);
+    border: 2px dashed var(--neon-purple);
+}
+
+/* Win Overlay */
+.win-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(13, 13, 13, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.win-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.win-overlay h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.win-overlay p {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 2rem;
+}
+
+.neon-btn {
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+}
+
+.neon-btn:hover {
+    background: var(--neon-green);
+    color: #000;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+}
+
+/* Confetti Styles */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--neon-purple);
+    z-index: 90;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
